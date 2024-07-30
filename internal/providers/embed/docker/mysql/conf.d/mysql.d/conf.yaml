@@ -1,0 +1,7 @@
+init_config:
+instances:
+- host: mysql
+  dbm: true
+  port: 3306
+  username: datadog
+  password: datadog123

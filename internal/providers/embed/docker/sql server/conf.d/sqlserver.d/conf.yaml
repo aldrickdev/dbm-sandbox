@@ -1,0 +1,9 @@
+init_config:
+
+instances:
+  - dbm: true
+    host: 'ssql,1433'
+    username: sa
+    password: Password1!
+    connector: odbc
+    driver: FreeTDS

@@ -1,0 +1,39 @@
+services:{{ with .Agent }}
+  datadog-agent:
+    image: gcr.io/datadoghq/agent:{{ .Version }}
+    environment:
+    - "DD_API_KEY={{ .DDAPIKey }}"
+    - "DD_HOSTNAME={{ .ProjectName }}"
+    volumes:
+    - '/var/run/docker.sock:/var/run/docker.sock:ro'{{ end }}
+    {{ with .DB }}{{ if eq .DBMS "Postgres" }}
+    - '$PWD/conf.d/postgres.d:/etc/datadog-agent/conf.d/postgres.d'
+
+  postgres:
+    image: postgres:{{ .Version }}
+    environment:
+    - "POSTGRES_PASSWORD=root"
+    command: ["-c", "config_file=/etc/postgresql/postgresql.conf"]
+    volumes:
+    - '$PWD/postgres/postgresql.conf:/etc/postgresql/postgresql.conf'
+    - '$PWD/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql'
+  {{ else if eq .DBMS "MySQL" }}
+    - '$PWD/conf.d/mysql.d:/etc/datadog-agent/conf.d/mysql.d'
+
+  mysql:
+    image: mysql:{{ .Version }}
+    environment:
+    - "MYSQL_ROOT_PASSWORD=root"
+    volumes:
+    - '$PWD/mysql/conf.d:/etc/mysql/conf.d'
+    - '$PWD/mysql/init-sql:/docker-entrypoint-initdb.d'
+  {{ else if eq .DBMS "SQL Server" }}
+    - '$PWD/conf.d/sqlserver.d:/etc/datadog-agent/conf.d/sqlserver.d'
+
+  ssql:
+    image: mcr.microsoft.com/mssql/server:{{ .Version}}
+    environment:
+    - "ACCEPT_EULA=Y"
+    - "MSSQL_SA_PASSWORD=Password1!"
+  {{ end }}
+{{ end }}

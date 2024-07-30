@@ -1,0 +1,8 @@
+init_config:
+instances:
+- host: postgres
+  dbm: true
+  port: 5432
+  username: datadog
+  password: root
+
