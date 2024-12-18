@@ -25,3 +25,13 @@ You will also need to have your Datadog API Key set in the environment variable 
 Below is an example of the error you would get if we can't find the `DD_API_KEY` environment variable:
 
 <img alt="missing api key error" src="assets/missingapikey.gif" width="600" />
+
+### Building
+
+To use the tool as a binary, you will need to build the tool, the simplest way to do this is to run the command:
+
+``` bash
+make build
+```
+
+This will build the tool and move the `dbm-sandbox` binary into the directory `/Users/$(USER)/.local/bin/`. Note that this location assumes that you are using a Mac, when building feel free to change this default location in the [Makefile](./Makefile) as you see fit.
