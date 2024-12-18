@@ -1,8 +1,9 @@
 package textInput
 
 import (
-	"dbm-sandbox/internal/styles"
 	"fmt"
+
+	"github.com/aldrickdev/dbm-sandbox/internal/styles"
 
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"

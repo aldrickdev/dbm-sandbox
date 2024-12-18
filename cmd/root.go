@@ -1,12 +1,13 @@
 package cmd
 
 import (
-	"dbm-sandbox/internal/providers"
-	"dbm-sandbox/internal/styles"
-	"dbm-sandbox/internal/utils/components/picker"
-	"dbm-sandbox/internal/utils/components/textInput"
 	"fmt"
 	"os"
+
+	"github.com/aldrickdev/dbm-sandbox/internal/providers"
+	"github.com/aldrickdev/dbm-sandbox/internal/styles"
+	"github.com/aldrickdev/dbm-sandbox/internal/utils/components/picker"
+	"github.com/aldrickdev/dbm-sandbox/internal/utils/components/textInput"
 
 	"github.com/spf13/cobra"
 )
@@ -42,7 +43,6 @@ func run(cmd *cobra.Command, args []string) {
 	initialText := "Welcome to the dbm sandboxing tool, where the goal is to help you create DBM sandboxes."
 	fmt.Print(styles.Question.Render(initialText))
 
-
 	// Gets the Datadog API Key
 	ddapikey, ok := os.LookupEnv(DATADOG_API_KEY_ENV)
 	if !ok {
@@ -51,12 +51,11 @@ func run(cmd *cobra.Command, args []string) {
 		return
 	}
 
-
 	// Gets a list of the available providers
 	var selectedProvider string
 	pickProvider := picker.NewPicker(
-		providers.GetAvailableProviders(), 
-		providers.GetProviderDescriptions(), 
+		providers.GetAvailableProviders(),
+		providers.GetProviderDescriptions(),
 		"What provider would you like to use?",
 		&selectedProvider,
 	)
