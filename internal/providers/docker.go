@@ -2,12 +2,13 @@ package providers
 
 import (
 	"bytes"
-	"dbm-sandbox/internal/utils/helpers"
 	"embed"
 	"fmt"
 	"os"
 	"strings"
 	"text/template"
+
+	"github.com/aldrickdev/dbm-sandbox/internal/utils/helpers"
 )
 
 var (

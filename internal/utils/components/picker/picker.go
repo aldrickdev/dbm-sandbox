@@ -1,8 +1,9 @@
 package picker
 
 import (
-	"dbm-sandbox/internal/styles"
 	"fmt"
+
+	"github.com/aldrickdev/dbm-sandbox/internal/styles"
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"

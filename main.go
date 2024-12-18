@@ -1,6 +1,6 @@
 package main
 
-import "dbm-sandbox/cmd"
+import "github.com/aldrickdev/dbm-sandbox/cmd"
 
 func main() {
 	cmd.Execute()
